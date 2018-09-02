@@ -1,0 +1,27 @@
+{
+  "name": "tproblems",
+  "version": "1.0.0",
+  "description": "Toy problem practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonaramos/tproblems.git"
+  },
+  "keywords": [
+    "toy",
+    "problem",
+    "practice"
+  ],
+  "author": {
+    "name": "tonaramos",
+    "email": "gtonaramos@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonaramos/tproblems/issues"
+  },
+  "homepage": "https://github.com/tonaramos/tproblems#readme"
+}
