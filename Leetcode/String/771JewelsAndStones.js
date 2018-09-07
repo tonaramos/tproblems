@@ -24,16 +24,29 @@ The characters in J are distinct.
  @return {number}
 */
 
-const numJewelsInStones = (J, S) => {
-  let storage = {};
-  J.split('').forEach(element => storage[element] = 0);
-  S.split('').forEach(item => {   
-    if (storage[item] || storage[item] === 0) {
-      storage[item] += 1;
-    }
-  });
-  return Object.keys(storage).map(item => storage[item]).reduce((accumulator, currentValue) => accumulator + currentValue);
-}
+// const numJewelsInStones = (J, S) => {
+//   let storage = {};
+//   J.split('').forEach(element => storage[element] = 0);
+//   S.split('').forEach(item => {   
+//     if (storage[item] || storage[item] === 0) {
+//       storage[item] += 1;
+//     }
+//   });
+//   return Object.keys(storage).map(item => storage[item]).reduce((accumulator, currentValue) => accumulator + currentValue);
+// }
 
-console.log(numJewelsInStones('z','ZZ'));
-console.log(numJewelsInStones('aA','aAAbbbb'));
+//============== Final code ==================
+//  compared to the attempt above where I iterated over the longer S string twice and had to produce an array with the storage values, 
+//    the code below iterates over S only once, and over J, which is shorter, multiple times. 
+let numJewelsInStones = (J, S) => {
+  let jewels = 0;                         
+  for (let i = 0; i < S.length; i++) {
+      if (J.indexOf(S[i]) !== -1) {       //  for indexOf method, if the value is not part of the J string the result is -1
+          jewels++;
+      }
+  }
+  return jewels;
+};
+
+// console.log(numJewelsInStones('z','ZZ'));
+// console.log(numJewelsInStones('aA','aAAbbbb'));
