@@ -23,21 +23,12 @@ Notes:
 0 <= A[i][j] <= 1
 */
 
-// var flipAndInvertImage = function(A) {
-//   let output = [];
-//   A.map(element => {
-//       output.push(element.reverse().map(item => item ? 0 : 1));
-//   })
-//   return output;
-// };
-
-// in the solution below we return the same item A transformed, 
 const flipAndInvertImage = (A) => {
   let len = A[0].length;
-  for(let i=0;i<len;i++){
-      A[i].reverse()
-      for(let j=0;j<len;j++)
-          A[i][j] = A[i][j] ? 0 : 1;
+  for(let i = 0; i < len; i++){
+    A[i].reverse()
+    for(let j = 0; j < len; j++)
+      A[i][j] = A[i][j] ? 0 : 1;
   }
-  return A
+  return A;
 };
