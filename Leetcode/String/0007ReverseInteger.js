@@ -22,29 +22,13 @@ assume that your function returns 0 when the reversed integer overflows.
   @return {number}
  */
 var reverse = function(x) {
-  if (x === null || Math.abs('' + x) === 0) { 
-    return 0;
-  }
-  const num = x > 0 ? Math.abs('' + x ) : -Math.abs('' + x);
-  console.log(num);
-  const str = '' + num;
-  if (num < 0) {
-    let negOutput = '-';
-    for(let i=str.length-1; i>-1; i--) {
-      negOutput += str[i];
-    }
-    return -Math.abs(negOutput);
-  }
-  let posOutput = '';
-  for(let j = str.length-1; j > -1; j--) {
-    posOutput += str[j];
-  }
-  return parseInt(posOutput) ;
+let num = Math.abs(x).toString().split('').reverse().join('')*Math.sign(x);
+return (num < 2147483646 || num > -2147483647) ? num : 0;
 };
 
-// console.log(reverse(5123));
-// console.log(reverse(-623));
-// console.log(reverse(123));
-// console.log(reverse(0000187));
+console.log(reverse(5123));
+console.log(reverse(-623));
+console.log(reverse(123));
+console.log(reverse(0000187));
 console.log(reverse(-123));
-// console.log(reverse(0120))
+console.log(reverse(0120))
