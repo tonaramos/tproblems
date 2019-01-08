@@ -59,24 +59,41 @@ var romanToInt = function(s) {
     'D': 500,
     'M': 1000
   }  
-
-  s.split('').map((item, i) => {
-    // if next value excist 
-    //   if current is less than next then subtract from output 
-    //     else add
-      if (s[i+1]) {
-        if (dic[item] < dic[s[i+1]]) {
-          output -= dic[item];
-        } else {
-          output += dic[item];
-        }
-      } else {
-        output += dic[item];
-      }
-    return true;
-  })
-
-
+   
+  for (let i=0; i<s.length-1; i++) {
+    // console.log(i);
+    if (dic[s[i]] < dic[s[i+1]]  ) {
+      output -= dic[s[i]];
+    } else {
+      output += dic[s[i]];
+    }
+  }
+  
+  output += dic[s[s.length -1]];
+   
   return output;
 };
 
+
+//  -- Slower solution --
+  // s.split('').map((item, i) => {
+  //   // if next value excist 
+  //   //   if current is less than next then subtract from output 
+  //   //     else add
+  //     if (s[i+1]) {
+  //       if (dic[item] < dic[s[i+1]]) {
+  //         output -= dic[item];
+  //       } else {
+  //         output += dic[item];
+  //       }
+  //     } else {
+  //       output += dic[item];
+  //     }
+  //   return true;
+  // })
+  //   return output;
+  // };
+
+  
+
+console.log(romanToInt("MCMXCIV"));
