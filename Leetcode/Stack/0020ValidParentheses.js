@@ -33,6 +33,9 @@ Output: true
 
 
 const isValid = function(s) {
+  if (s.length % 2 === 1) {
+      return false;
+  }
   let stack = [];
   const open = {
     '(': true,
@@ -44,27 +47,15 @@ const isValid = function(s) {
     ']': '[',
     '}': '{',
   }
-  // console.log('input s -> ', s);
   for (let i = 0; i < s.length; i ++) {
-    // console.log('stackBefore ->', stack);
     if (open[s[i]]) {
       stack.push(s[i]);
     }
-    // console.log('last item in stack-> ', stack[stack.length-1]);
-    // console.log('close[s[i]] === stack[stack.length-1])==>', close[s[i]] === stack[stack.length-1]);
     if (close[s[i]] && (close[s[i]] === stack[stack.length-1])) {
       stack.pop();
     }
-    // console.log('stackAfter ->', stack);
   }
-  return stack.length === 0 ? true : false;
+  return stack.length === 0;
 }
 
-// const str1 = '{[]}';
-// const str2 = '{}[]';
-// const str3 = '{{]]';
-// const str4 = '{}[';
-// console.log(isValid(str1));
-// console.log(isValid(str2));
-// console.log(isValid(str3));
-// console.log(isValid(str4));
+// Runtime: 52 ms, faster than 99.82% of JavaScript online submissions for Valid Parentheses.
