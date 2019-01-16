@@ -32,19 +32,20 @@ const strStr = (haystack, needle) => {;
   for (let i=0; i<haystack.length-1; i++) {
     if (haystack[i] === needle[0]) {
       let tempPointer = i;
-      let match = true;
       for(let j=0; j<needle.length; j++) {
-        if (!match) break;
         if (haystack[tempPointer] !== needle[j]) {
-          match = false;
+          break;
+        }
+        if (j === needle.length-1) {
+          return i;
         }
         tempPointer++;
       }
-      if (match) return i;
     }
   }
   return -1;
 };
+
 
 const test1 = 'HelloWord';
 const test2 = 'helloWorllld';
