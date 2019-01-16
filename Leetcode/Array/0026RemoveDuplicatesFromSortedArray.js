@@ -31,23 +31,30 @@ for (int i = 0; i < len; i++) {
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function(nums) {
-    let currentVal = nums[0];
-    let uniqueValIndex = 1;
-    for(let i=1; i<nums.length; i++) {
-      if (nums[i] !== currentVal) {
-        let temp = nums[i];
-        nums[i] = currentVal;
-        nums[uniqueValIndex] = temp;
-        currentVal= nums[uniqueValIndex];
-        uniqueValIndex++;
-      }
+
+// var removeDuplicates = function(nums) {
+//     let currentVal = nums[0];
+//     let uniqueValIndex = 1;
+//     for(let i=1; i<nums.length; i++) {
+//       if (nums[i] !== currentVal) {
+//         let temp = nums[i];
+//         nums[i] = currentVal;
+//         nums[uniqueValIndex] = temp;
+//         currentVal= nums[uniqueValIndex];
+//         uniqueValIndex++;
+//       }
+//     }
+//     return uniqueValIndex;
+// }; 
+
+const removeDuplicates = nums => {
+  let i = 0;
+  for(let j=1; j<nums.length; j++) {
+    if (nums[i] != nums[j]) {
+      nums[i+1] = nums[j];
+      i++
     }
-    return uniqueValIndex;
-}; 
-
-const test1 = [1,1,2];
-const test2 = [0,0,1,1,1,2,2,3,3,4]
-
-console.log(removeDuplicates(test1), 'test1 array -> ', test1);
-console.log(removeDuplicates(test2), 'test2 array -> ', test2);
+  }
+  return i+1;
+}
+// Note that the  above solution is correct although it can deleted repeated values and/or create duplicates.  
