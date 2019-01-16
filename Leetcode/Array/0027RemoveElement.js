@@ -35,80 +35,32 @@ for (int i = 0; i < len; i++) {
 
 
 const removeElement = (nums, val) => {
-  if (nums.length === 1 && nums[0] === val) {
-    console.log('Exit 1');
-    return [];
-  }
-  if (nums.length === 2) {
-    if (nums[0] === val && nums[1] === val ){
-      console.log('Exit 2');
-      return 0;
-    }
-    if (nums[0] === val && nums[1] !== val) {
-      nums[0] = nums[1];
-      nums[1] = val;
-      console.log('Exit 3');
-      return 1;
-    }
-    if (nums[0] !== val && nums[1] === val) {
-      console.log('Exit 4');
-      return 1;
+  let j = 0;
+  for (let i=0; i<nums.length; i++) {
+    if (nums[i] !== val) {
+      nums[j] = nums[i];
+      j++;
     }
   }
-  let count = 1;
-  for(let i=0; i<nums.length-1; i++) {
-    // console.log(i, 'val-> ', val);
-    // console.log(nums[i], ' nums[i] === val -> ', nums[i] === val );
-    if (nums[i] === val && i !== nums.length-1) {
-      console.log('imhere');  
-      let indexToSwap = i;
-      let indexToCheck = i+1;
-      let swapped = false;
-      while (!swapped) {
-        if ( nums[indexToSwap] !== nums[indexToCheck]) {
-          let temp = nums[indexToSwap];
-          nums[indexToSwap] = nums[indexToCheck];
-          nums[indexToCheck] = temp;
-          swapped = true;
-          if (indexToCheck === nums.length-1) {
-            console.log('Exit 5');
-            return i+1;
-          }
-        } else {
-          indexToCheck++;
-        }
-        
-        if (indexToCheck >= nums.length) {
-          console.log('Exit 6');
-          return i;
-        }
-      }
-      indexToSwap = nums[i];
-    }
-    
-    console.log(i, ' nums[i]-> ', nums[i])
-    // if (i === nums.length-1 && nums[i] === val){
-    //   console.log('Exit 7');
-    //   return i+1;
-    // }
-    if ( nums[i] !== val) {
-      count++;
-    }
-    if (count === nums.length-1) {
-      return count;
-    }
-  }
+  return j;
 }
+
+/*
+work with two pointers. Keeping track of the j pointer which  only changes if its value is diff than val
+  incase its val is equal to val the pointer stays behind and swaps the next diff num with it while keeping 
+    count of how many non equal val have passed. 
+*/
+
 const test1 = [3,2,2,3];
 const test2 = [0,1,2,2,3,0,4,2];
 const test3 = [4,5];
 const test4 = [7,8];
-const test5 = [4,4,4,8];
-const test6 = [2,2,2,2,3,2,2,3];
-// console.log(removeElement(test1, 3), 'test1 -> ', test1);
-// console.log(removeElement(test2, 2), 'test2 -> ', test2);
-// console.log(removeElement(test3, 4), 'test3 -> ', test3);
-// console.log(removeElement(test4, 8), 'test4 -> ', test4);
-// console.log(removeElement(test5, 4), 'test5 -> ', test5);
+const test5 = [4,8,5,8,6];
+const test6 = [2,2,2,2,2,2,3,2];
+console.log(removeElement(test1, 3), 'test1 -> ', test1);
+console.log(removeElement(test2, 2), 'test2 -> ', test2);
+console.log(removeElement(test3, 4), 'test3 -> ', test3);
+console.log(removeElement(test4, 8), 'test4 -> ', test4);
+console.log(removeElement(test5, 8), 'test5 -> ', test5);
 console.log(removeElement(test6, 3), 'test6 -> ', test6);
 
