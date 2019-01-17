@@ -15,14 +15,30 @@ solution using the divide and conquer approach, which is more subtle.
 */
 
 
-var maxSubArray = function(nums) {
-  let best = nums[0]
-  let current = nums[0]
-  for (let i=1;i<nums.length; i++) {
-    current = Math.max(current + nums[i], nums[i])
-    best = Math.max(current, best);
+const maxSubArray = function(nums) {
+  let res = 0;
+  let max = 0;
+  let min = -Infinity
+  let a = nums.length;
+  if (a == 1 ) return nums[0];
+  for (let i = 0; i < a; i++) {
+      res = res + nums[i];
+      if (res > max) {
+          max = res
+      }
+      if (res < 0) {
+          res = 0;
+      }  
   }
-  return best;
+  if (max == 0) {
+      for (let i = 0; i < a; i ++) {
+          if (nums[i] > min) {
+              min = nums[i]
+          }
+      }
+      return min  
+  }
+  return max
 };
 
 
