@@ -24,18 +24,13 @@ Output: 0
 */
 
 const searchInsert = function(nums, target) {
-  let index = 0;
-  if (nums.length === 0 ||  target < nums[0] ) return 0;
-  if (target > nums[nums.length-1]) return nums.length;
-
-  for (let i=0; i<nums.length; i++) {
-    if (nums[i] === target) {
-      return i;
-    }
-    if (target < nums[i]) {
+  let l = nums.length;
+  for (let i=0; i<l; i++) {
+    if (nums[i] >= target) {
       return i;
     }
   }
+  return l;
 };
 
 
