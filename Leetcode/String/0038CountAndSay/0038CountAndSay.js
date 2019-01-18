@@ -30,46 +30,6 @@ i-number
 o-string
 */
 
-// const countAndSay = (n) => {
-//   let mainCount = 1;
-//   let str = '1';
-//   let index = 0;
-
-//   while (count !== n) {
-//     let temp = ''
-//     let char = str[index];
-//     let count = 1;
-    
-//     while (index < str.length)
-//       if (!str[index+1]) {
-//         str = temp;
-//         break;
-//       }
-//       while( str[index+1] === char) {
-//         count++;
-//         index++;
-//       }
-//       temp = temp + count + char;
-
-//       count = 0;
-//       index++;
-//       char = str[index]
-
-
-//     let temp = '';
-//     let index = 0;
-//     let charCount = 0;
-//     let char = str[index];
-
-
-
-//     mainCount++;
-//   }
-  
-//   return output;
-// }
-//    1211
-
 const countAndSay = (n) => {
   let str = '1';
   let mainCount = 1;
@@ -92,14 +52,5 @@ const countAndSay = (n) => {
   }
   return str;
 }
-
-
-console.log('N=1 -> ',countAndSay(1));
-console.log('N=2 -> ',countAndSay(2));
-console.log('N=3 -> ',countAndSay(3));
-console.log('N=4 -> ',countAndSay(4));
-console.log('N=5 -> ',countAndSay(5));
-console.log('N=6 -> ',countAndSay(6));
-
 
 module.exports = countAndSay;
