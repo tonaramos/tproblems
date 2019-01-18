@@ -35,16 +35,14 @@ const plusOne = (arr) => {
       arr[index] = arr[index] + carrier;
       carrier = 0;
       return arr;
+      break;
     }
     if (arr[index] === 9) {
       arr[index] = 0;
       index--;
     }
-    
-
   }
   return arr;
 }
-console.log(plusOne([1,2,3]));
 
 module.exports = plusOne;
