@@ -16,13 +16,12 @@ Output: "10101"
 */
 
 const addBinary = function(a, b) {
-  let count = 0;
   let indexA = a.length-1;
   let indexB = b.length-1;
   let output = '';
   let carrier = 0;
   
-    while (count < a.length || count < b.length) {
+    while (indexA > -1 || indexB > -1) {
       if (a[indexA] === '0' && b[indexB] === '0') {
   
         if (carrier === 0) {
@@ -31,7 +30,6 @@ const addBinary = function(a, b) {
           output = '1' + output;
           carrier = 0;
         }
-        count++;
         indexA--;
         indexB--;
       } 
@@ -43,7 +41,6 @@ const addBinary = function(a, b) {
           output = '0' + output;
           carrier = 1;
         }
-        count++;
         indexA--;
         indexB--;
       }
@@ -58,7 +55,6 @@ const addBinary = function(a, b) {
           output = '0' + output;
           carrier = 1;
         }
-        count++;
         indexA--;
         indexB--;
       }
@@ -73,7 +69,6 @@ const addBinary = function(a, b) {
           output = '0' + output;
           carrier = 1;
         }
-        count++;
         indexA--;
         indexB--;
       }
@@ -86,7 +81,6 @@ const addBinary = function(a, b) {
           output = '1' + output;
           carrier = 1;
         }
-        count++;
         indexA--;
         indexB--;
       }
@@ -96,5 +90,43 @@ const addBinary = function(a, b) {
       }
   return output;
 }
+
+/*
+const addBinary = (a, b) => {
+  let p1 = a.length - 1;
+  let p2 = b.length - 1;
+
+  let rem = 0;
+  let added = '';
+  while (p1 >= 0|| p2 >= 0) {
+    let sum = rem;
+    sum += p1 >= 0 ? parseInt(a[p1]) : 0;
+    sum += p2 >= 0 ? parseInt(b[p2]) : 0;
+
+    let n = 0;
+    switch(sum) {
+      case 3:
+        n = 1;
+        rem = 1;
+        break;
+      case 2:
+        n = 0;
+        rem = 1;
+        break;
+      case 1:
+        n = 1;
+        rem = 0;
+        break;
+    }
+
+    added = `${n}${added}`
+
+    p1 -= 1;
+    p2 -= 1;
+  }
+
+  return rem ? `${rem}${added}` : added;
+}
+*/
 
 module.exports = addBinary;
