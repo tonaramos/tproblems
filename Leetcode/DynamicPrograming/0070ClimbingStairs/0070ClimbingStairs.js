@@ -22,14 +22,13 @@ Explanation: There are three ways to climb to the top.
  */
 
 
-var climbStairs = function(n) {
+const climbStairs = (n) => {
   //base cases
-  if (n === 0) return 0;
-  if (n === 1) return 1;;
+  if (n <= 2) return n;
   let twoStepsBefore = 1;
-  let oneStepBefore = 1;
+  let oneStepBefore = 2;
   let totalWays = 0;
-  for (let i=2;i<n+1; i++) {
+  for (let i=3;i<n+1; i++) {
     totalWays =  twoStepsBefore + oneStepBefore;
     twoStepsBefore = oneStepBefore;
     oneStepBefore = totalWays;
