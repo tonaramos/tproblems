@@ -21,37 +21,20 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
  */
 
-// This solution is not the best when we can use memoization. By using recursion I make 
-// unnecessary calls for results I have already obtained. 
-// The result for any given steps is the addition of the steps taken to the two previous steps. 
+
 var climbStairs = function(n) {
-
-  /*
-  create each scenario and use the results of each for the next 
-  necessary n |1|1|2|3|5|8|13|21|34|
-  
-  */
-  
   //base cases
-if (n === 0) return 0;
-if (n === 1) return 1;
-// if (n === 2) return 2;
-
-let twoStepsBefore = 1;
-let oneStepBefore = 1;
-let totalWays = 0;
-
-for (let i=2;i<n+1; i++) {
-  totalWays =  twoStepsBefore + oneStepBefore;
-  twoStepsBefore = oneStepBefore;
-  oneStepBefore = totalWays;
-}
-
-return totalWays;
-
-
+  if (n === 0) return 0;
+  if (n === 1) return 1;;
+  let twoStepsBefore = 1;
+  let oneStepBefore = 1;
+  let totalWays = 0;
+  for (let i=2;i<n+1; i++) {
+    totalWays =  twoStepsBefore + oneStepBefore;
+    twoStepsBefore = oneStepBefore;
+    oneStepBefore = totalWays;
+  }
+  return totalWays;
 };
-
-console.log(climbStairs(45));
 
 module.exports = climbStairs;
