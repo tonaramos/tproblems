@@ -19,17 +19,17 @@ Output: [1,2,2,3,5,6]
 
 
 var merge = function (nums1, m, nums2, n) {
-  var length = m + n;                 //length of the nums1 array
-  m--;                                // this yields the max index of m and n
+  var length = m + n;
+  m--;
   n--;
   
-  while (n >= 0) {                    // while there are positions left in nums2
-    length--;                         //  index for sums1 array
+  while (n >= 0) {
+    length--;
     
-    if (nums1[m] > nums2[n]) {        //  if nums1m(last num) is grater then nums2n(last num)
-      nums1[length] = nums1[m--];     //    assign to the last cell of nums, the value of the num in nums1[length] 
+    if (nums1[m] > nums2[n]) {
+      nums1[length] = nums1[m--];
     } else {                          
-      nums1[length] = nums2[n--];     //  assign nums2[n--] to num1[length the value
+      nums1[length] = nums2[n--];
     }
   }
 }
