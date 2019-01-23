@@ -33,16 +33,10 @@ Input:
 Output: false
 */
 
-//this is a breadth first problem use recursion when comparing the nodes. 
-
-
 const isSameTree = (p, q) => {
   if (p === null && q === null) return true;
   if (p === null || q === null) return false;
-
-  // return true when the value is the same and 
-  //   call isSameTree for the next two nodes to compare lefts and rights. 
-
+  
   if ( p.val === q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right)) {
     return true;
   } else {
