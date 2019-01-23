@@ -33,41 +33,21 @@ Input:
 Output: false
 */
 
-//this is a breadth first problem
+//this is a breadth first problem use recursion when comparing the nodes. 
+
 
 const isSameTree = (p, q) => {
-    if (!p.left && q.left || !p.right && q.right) {
-      return false;
-    }
+  if (p === null && q === null) return true;
+  if (p === null || q === null) return false;
 
-  const traverse = (tree) => {
-    let output = [];
+  // return true when the value is the same and 
+  //   call isSameTree for the next two nodes to compare lefts and rights. 
 
-    const pushOrderNodes = val => {
-      output.push(val);
-    };
-
-    const searchTree = (func) => {
-      let queue = [tree];
-      while (queue.length) {
-        let currentNode = queue.shift();
-        if (currentNode.left) {
-          queue.push(currentNode.left)
-        }
-        if (currentNode.right) {
-          queue.push(currentNode.right)
-        }
-        func(currentNode.val)
-      }
-    }
-    
-    searchTree(pushOrderNodes);
-
-      return output;
+  if ( p.val === q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right)) {
+    return true;
+  } else {
+    return false;
   }
-
-  let arr1 = traverse(p);
-  let arr2 = traverse(q);
-
-    return arr1 === arr2;
 };
+
+module.exports = isSameTree;

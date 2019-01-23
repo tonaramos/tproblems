@@ -4,15 +4,22 @@ const isSameTree = require('./0100SameTree.js');
 //   expect('*FUNC*'('*args*')).toBe('*result*');
 // });
 
-let input = [1,2,3];
-let output = [1,2,4];
+let input1 = {val:1, left:null, right:null };
+let input2 = {val:1, left:null, right:null };
 
-test('Returns a boolean', () => {
-  expect(typeof(isSameTree(input))).toBe('boolean');
+test('isSameTree to be a function', () => {
+  expect(isSameTree).toBeInstanceOf(Function);
 });
 
-// test('Returns the correct solution for [4,5,6]', () => {
-//   input = [4,5,6];
-//   output = [4,5,7];
-//   expect(plusOne(input)).toEqual(output)
-// });
+test('Returns a boolean', () => {
+  expect(typeof(isSameTree(input1, input2))).toBe('boolean');
+});
+
+test('Returns true for equal trees', () => {
+  expect(isSameTree(input1, input2)).toBeTruthy();
+});
+
+test('Returns false for different trees', () => {
+  input2 = {val:1, left:{val:1, left:null, right:null }, right:null };
+  expect(isSameTree(input1, input2)).toBeFalsy();
+});
