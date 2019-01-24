@@ -16,60 +16,28 @@ But the following [1,2,2,null,3,null,3] is not:
    3    3
 */
 
-
 const isSymmetric = (root) => {
-    //traverse the array and create an array
-    
-    
+  if (!root) return true;
 
-    const traverse = node => {
-      let output = [];
-
-      const func = val => output.push(val);
-
-      let queue = [];   //this is to push the nodes in breadth order
-      queue.push(node);   
-      while (queue.length) {
-        let currentNode = queue.shift();
-          if (currentNode.left || currentNode.right) {
-            if (currentNode.left) {
-              queue.push(currentNode.left);
-            } else {
-              queue.push({val: null});
-            }
-            if (currentNode.right){
-              queue.push(currentNode.right);
-            } else {
-              queue.push({val: null});
-            }
-          }
-        func(currentNode.val);
-        // console.log('queue-> ', queue, ' output-> ', output);
-      }
-      return output;      
+  const compare = (p,q) => {
+    if (!p && !q) { 
+      return true;   
     }
-
-    let arr = traverse(root);
-    console.log(arr);
-
-    while (arr.length > 1) {
-      let str
+    if (!p || !q || p.val !== q.val) {
+      return false;
     }
+    return compare(p.left, q.right) && compare(p.right, q.left);
+  }
+  return compare(root.left, root.right);
+}
 
-
-   
-
-
-
-    return true;
-};
 
 let input = {
   val: 1,
   left: {
     val: 2,
     left: {
-      val: 4,
+      val: 3,
       left: null,
       right: null,
     },
