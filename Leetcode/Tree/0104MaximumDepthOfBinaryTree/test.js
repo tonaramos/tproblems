@@ -29,7 +29,8 @@ test('Returns 2 for an symmetric 2 level depth', () => {
 });
 
 test('Returns 2 for an asymmetric 2 level depth', () => {
-  input = {val:1, left: null, right:{val:2, left:null, right:null } };  // [1,null,2]
+  input = {val:1, left: null, right:{val:2, left:null, right:null } };  
+  // [1,null,2]
   expect(maxDepth(input)).toEqual(2);
 });
 
