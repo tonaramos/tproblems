@@ -20,38 +20,12 @@ function TreeNode(val) {
 
 var sortedArrayToBST = function(nums) {
   if(!nums.length) return null;
-    if (nums.length === 1) return new TreeNode(nums[0]);
-    if (nums.length === 2) {
-      let output = new TreeNode(nums[1]);
-      output.left = nums[0];
-      return output;
-    }
-    //find midpoint
-    const midpoint = nums.length%2 === 0 ? (nums.length/2) : (nums.length-1)/2;
-    let tree = new TreeNode(nums[midpoint]);
-    tree;
-    let lp = midpoint - 1;
-    let currLeftNode = tree; 
-    while (lp >= 0) {
-      currLeftNode.left = new TreeNode(nums[lp])
-      currLeftNode = currLeftNode.left;
-      lp--;
-    }
-    let rp = midpoint + 1;
-    let currRightNode = tree; 
-    while (rp < nums.length) {
-      currRightNode.right = new TreeNode(nums[rp] )
-      currRightNode = currRightNode.right;
-      rp++;
-    }
+  const midpoint = Math.floor((nums.length-1)/2)
+  let tree = new TreeNode(nums[midpoint]);
+  tree.left = sortedArrayToBST(nums.slice(0, midpoint))
+  tree.right = sortedArrayToBST(nums.slice(midpoint+1))
   return tree;
-};
-
-let input;
-
-// input = [-10,-3,0,5,9];
-// console.log(sortedArrayToBST(input))
-
+ }
 
 input = [];
 console.log(sortedArrayToBST(input))
