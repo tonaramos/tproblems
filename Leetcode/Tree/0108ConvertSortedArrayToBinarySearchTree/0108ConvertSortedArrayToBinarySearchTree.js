@@ -12,13 +12,8 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
    /   /
  -10  5
 */
-function TreeNode(val) {
-  this.val = val;
-  this.left = this.right = null;
-}
 
-
-var sortedArrayToBST = function(nums) {
+const sortedArrayToBST = (nums) => {
   if(!nums.length) return null;
   const midpoint = Math.floor((nums.length-1)/2)
   let tree = new TreeNode(nums[midpoint]);
@@ -26,23 +21,3 @@ var sortedArrayToBST = function(nums) {
   tree.right = sortedArrayToBST(nums.slice(midpoint+1))
   return tree;
  }
-
-input = [];
-console.log(sortedArrayToBST(input))
-
-input = [5];
-console.log(sortedArrayToBST(input))
-
-input = [1,3];
-console.log(sortedArrayToBST(input))
-
-input = [10,11,12];
-console.log(sortedArrayToBST(input))
-
-input = [-8,-7,-5,-4];
-console.log(sortedArrayToBST(input))
-
-input = [18,19,20,21,22];
-console.log(sortedArrayToBST(input))
-
-console.log('RESULT -> ', sortedArrayToBST(input))
