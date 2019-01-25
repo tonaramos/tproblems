@@ -20,25 +20,32 @@
 
 const maxDepth = function(root) {
   if (!root) return 0;
-  const traverse = (node, level = 1) => {
-      if (!node.left && !node.right) return level;
+  const traverse = async (node, level = 1) => {
+      if (!node.left && !node.right) {
+        // console.log('return of level at l->', level, )
+        return level;
+      }
       let l;
       let r;
       if (node.left) {
-        console.log('checked left @ level-> ', level)  
-        let nextLevel = traverse(node.left, level+1);
+        // console.log('checked left @ level-> ', level)  
+        let nextLevel = await traverse(node.left, level+1);
           l = nextLevel > level ? nextLevel : level;
       }
       if (node.right) {
-        console.log('checked right @ level-> ', level)  
-        let nextLevel = traverse(node.right, level+1);
+        // console.log('checked right @ level-> ', level)  
+        let nextLevel = await traverse(node.right, level+1);
           r = nextLevel > level ? nextLevel : level;
       }
       console.log('return at level-> ', level, ' with r->', r, ' l->', l);
-      return l > r ? l : r;
+        const compare = (a, b) => {
+          return a > b ? a : b; 
+
+        } 
+      return compare( l, r);
   }
   
-  return traverse(root);
+  traverse(root).then(res => console.log(res));
   
  
 };
@@ -58,12 +65,13 @@ input = {val: 1, left: null, right:{val: 2, left: null, right: null } };
 input = {val: 1, left:{val: 2, left: {val: 3, left: null, right: null }, right: {val: 3, left: null, right: null } }, right:{val: 2, left: {val: 3, left: null, right: null }, right: {val:3, left: null, right: null } } };  
 // [1,2,2,3,3,3,3]
 console.log('     ----- 3 levels ----');
-console.log('3 levels-> ', maxDepth(input));
+// console.log('3 levels-> ', maxDepth(input));
+console.log('The RETURNED VALUE -> ', maxDepth(input))
 
 input = {val: 1, left: {val: 2, left: null, right: null }, right: {val: 2, left: {val: 3, left: null, right: null }, right: null } };  
 // [1,2,2,null,null,3,null]
 console.log('     ----- 3 levels A----');
-console.log('3 levels asymmetric-> ', maxDepth(input));
+// console.log('3 levels asymmetric-> ', maxDepth(input));
 
 input = {val: 1, left: {val: 2, left: null, right: null }, right: {val: 2, left: {val: 3, left: null, right: {val: 4, left: null, right: null } }, right: null } };  
 // [1,2,2,null,null,3,null,null,null,null,null,4,null,null]
@@ -75,7 +83,7 @@ input = {val: 1, left: {val: 2, left: null, right: null }, right: {val: 2, left:
 //        \
 //         4     
 // console.log('     ----- 4 levels A----');
-// console.log('4 levels asymmetric-> ', maxDepth(input));
+console.log('4 levels asymmetric-> ', maxDepth(input));
 
 
 module.exports = maxDepth;
