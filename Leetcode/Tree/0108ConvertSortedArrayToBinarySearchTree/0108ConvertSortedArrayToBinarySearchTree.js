@@ -15,7 +15,7 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
 
 const sortedArrayToBST = (nums) => {
   if(!nums.length) return null;
-  const midpoint = Math.floor((nums.length-1)/2)
+  const midpoint = Math.floor((nums.length-1)/2);
   let tree = new TreeNode(nums[midpoint]);
   tree.left = sortedArrayToBST(nums.slice(0, midpoint))
   tree.right = sortedArrayToBST(nums.slice(midpoint+1))
