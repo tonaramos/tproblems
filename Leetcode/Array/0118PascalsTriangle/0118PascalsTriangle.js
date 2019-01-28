@@ -1,4 +1,4 @@
-var generate = function(numRows) {
+const generate = (numRows) => {
   if (numRows === 0) return [];
   let output = [[1]];
   if (numRows === 2) {
@@ -15,11 +15,3 @@ var generate = function(numRows) {
   }
   return output;
 };
-
-console.log('0 rows RESULT -> ', generate(0));
-console.log('1 rows RESULT -> ', generate(1));
-console.log('2 rows RESULT -> ', generate(2));
-console.log('3 rows RESULT -> ', generate(3));
-console.log('4 rows RESULT -> ', generate(4));
-console.log('5 rows RESULT -> ', generate(5));
-console.log('5 rows RESULT -> ', generate(6));
