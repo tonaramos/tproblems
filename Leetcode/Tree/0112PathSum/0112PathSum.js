@@ -15,28 +15,19 @@ Given the below binary tree and sum = 22,
 return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 */
 
-var hasPathSum = function(root, sum) {
+const hasPathSum = (root, sum, curr = 0) => {
   if (!root) return false;
-  sum -= root.val;
-  if (!root.left && !root.right) {
-      return sum === 0;
+  if (root) {
+    if (!root.left && !root.right) {
+      if (root.val + curr === sum) {
+        return true;
+      }
+      if (root.val + curr !== sum) {
+        return false;
+      }
+    }
+    return hasPathSum(root.left, sum, curr + root.val) || hasPathSum(root.right, sum, curr + root.val)
   }
-  return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
 };
-
-// var hasPathSum = function(root, sum, curr = 0) {
-//   if (!root) return false;
-//   if (root) {
-//     if (!root.left && !root.right) {
-//       if (root.val + curr === sum) {
-//         return true;
-//       }
-//       if (root.val + curr !== sum) {
-//         return false;
-//       }
-//     }
-//     return hasPathSum(root.left, sum, curr + root.val) || hasPathSum(root.right, sum, curr + root.val)
-//   }
-// };
 
 module.exports = hasPathSum;
