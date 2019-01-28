@@ -17,17 +17,10 @@ return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 
 const hasPathSum = (root, sum, curr = 0) => {
   if (!root) return false;
-  if (root) {
-    if (!root.left && !root.right) {
-      if (root.val + curr === sum) {
+    if (!root.left && !root.right && root.val + curr === sum) {
         return true;
       }
-      if (root.val + curr !== sum) {
-        return false;
-      }
-    }
     return hasPathSum(root.left, sum, curr + root.val) || hasPathSum(root.right, sum, curr + root.val)
-  }
 };
 
 module.exports = hasPathSum;
