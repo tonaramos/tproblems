@@ -11,7 +11,7 @@ Output: [1,3,3,1]
  * @param {number} rowIndex
  * @return {number[]}
  */
-var getRow = function(rowIndex) {
+const getRow = (rowIndex) => {
   let row = [1];
   if (rowIndex === 0) return row;
   while (rowIndex) {
@@ -25,13 +25,3 @@ var getRow = function(rowIndex) {
   }
   return row;
 };
-
-
-console.log('0 - RESULT-> ', getRow(0));
-console.log('1 - RESULT-> ', getRow(1));
-console.log('2 - RESULT-> ', getRow(2));
-console.log('3 - RESULT-> ', getRow(3));
-console.log('4 - RESULT-> ', getRow(4));
-console.log('5 - RESULT-> ', getRow(5));
-console.log('6 - RESULT-> ', getRow(6));
-console.log('7 - RESULT-> ', getRow(7));
