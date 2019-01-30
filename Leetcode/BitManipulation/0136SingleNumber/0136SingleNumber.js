@@ -14,7 +14,7 @@ Output: 4
 */
 
 
-var singleNumber = function(nums) {
+const singleNumber = (nums) => {
   let store = {};  
   for (let i=0; i<nums.length; i++) {
     if (store[nums[i]] || store[nums[i]] === 0) {
@@ -25,12 +25,3 @@ var singleNumber = function(nums) {
   }
   return Object.values(store)[0];
 };
-
-let arr = [2,2,1];
-console.log(' [1,2,2] RESULT-> ', typeof(singleNumber(arr)));
-arr = [1,2,2];
-console.log(' [2,2,1] RESULT-> ', singleNumber(arr));
-arr = [1,2,1,5,2];
-console.log(' [2,2,1] RESULT-> ', singleNumber(arr));
-arr = [2,8,2,3,3,6,6,8,0];
-console.log(' [2,8,9,0,2,3,3,5,6,1,6,8,9,0] RESULT-> ', singleNumber(arr));
