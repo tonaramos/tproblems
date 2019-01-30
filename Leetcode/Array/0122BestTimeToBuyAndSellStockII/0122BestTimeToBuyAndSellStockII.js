@@ -13,42 +13,44 @@ Input: [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
-// input = [3,9,1,2,7,4,8];  //should be 
-var maxProfit = function(prices) {
+
+const maxProfit = (prices) => {
   let p1 = prices[0] || 0;
   let p2 = prices[1] || 0;
-  // let lowest = p1;
-  // let highest = p2;
-  // let overallGain = highest - lowest;
   let gain = Math.max(p2 - p1, 0);
   p1 = prices[1];
-  // p2 = prices[1];
   for (let i=1; i<prices.length; i++) {
-    // if (prices[i] < lowest) {
-    //   lowest = prices[i];
-    //   highest = prices[i];
-    //   overallGain = Math.max(overallGain, highest - lowest);
-    // }
-    // if (prices[i] > highest) {
-    //   highest = prices[i];
-    //   overallGain = Math.max(overallGain, highest - lowest);
-    // }
     if (prices[i] >= p2) {
       p2 = prices[i];
     }
-      //we need to sell and reset while there are days coming up 
-      /* Adding the gains from day to day is the same as waiting until reaching the highest value before it drops.
-         In this solution we only add if the current day is greater than the last one. 
-         and we try to have as many transactions as possible as that will yield the most gains unless the price is not
-         consecutive and jumps around then we compare with the overallGain.
-      */
     gain += Math.max(p2 - p1, 0);;
     p2 = prices[i];
     p1 = prices[i];
   } 
-// return Math.max(gain, overallGain);
 return gain; 
 }
+
+/*
+        AND better to understand solution...
+
+var maxProfit = function(prices) {
+  if (!prices.length) return 0;
+  
+  let profit = 0;
+  let buyCost = prices[0];
+  
+  for (let i=1; i<prices.length; i++) {
+      const price = prices[i];
+      if (price > buyCost) {
+          profit += price - buyCost;
+      }
+      
+      buyCost = price;
+  }
+  
+  return profit;
+};
+*/
 
 let input = [];
 console.log('  RESULT-> ', maxProfit(input))
