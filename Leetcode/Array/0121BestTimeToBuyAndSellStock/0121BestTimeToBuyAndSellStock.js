@@ -14,7 +14,7 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
 
-var maxProfit = function(prices) {
+const maxProfit = (prices) => {
   let gain = prices[1] - prices[0]  > 0 ? prices[1] - prices[0] : 0;
   let p1 = prices[0];
   for (let i=1; i<prices.length; i++) {
@@ -26,32 +26,3 @@ var maxProfit = function(prices) {
   }
 return gain;
 };
-
-let input = [];
-console.log('  RESULT-> ', maxProfit(input))
-input = [0];
-console.log('  RESULT-> ', maxProfit(input))
-input = [1];
-console.log('  RESULT-> ', maxProfit(input))
-input = [5,2];
-console.log('  RESULT-> ', maxProfit(input))
-input = [3,9];
-console.log('  RESULT-> ', maxProfit(input))
-input = [3,9,1,2,7,4,8];  //should be 7
-console.log('  RESULT-> ', maxProfit(input))
-input = [10,9,8,2,1]; // 0
-console.log('  RESULT-> ', maxProfit(input))
-input = [10,9,8,2,3,1]; // 1
-console.log('  RESULT-> ', maxProfit(input))
-input = [10,11,8,5,3,1]; // 1
-console.log('  RESULT-> ', maxProfit(input))
-input = [7,1,5,3,6,4]; // 5
-console.log('  RESULT-> ', maxProfit(input))
-input = [7,1,5,3,-6,11]; // 17
-console.log('  RESULT-> ', maxProfit(input))
-input = [-10,1,5,3,-3,11]; // 21
-console.log('  RESULT-> ', maxProfit(input))
-input = [4,1,5,3,-3,-10]; // 21
-console.log('  RESULT-> ', maxProfit(input))
-input = [7,6,5,2,4,3]; // 2
-console.log('  RESULT-> ', maxProfit(input))
