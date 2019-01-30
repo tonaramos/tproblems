@@ -34,55 +34,26 @@ Can you solve it using O(1) (i.e. constant) memory?
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head) {
-  //while not reaching null travel the list with two pointers at differnt speed 
-  //compare values if values are the same then the is a list cycle
+
+const hasCycle = (head) => {
   if (!head || !head.next) return false;
   let next = false;
   let curr = head;
   let curr2 = head.next.next;
-  let count = 0
     while (true) {
-      count
       if (!curr || !curr2) {
-        console.log('here', count)
         return false;  
       }
       if (curr2.next === null) { 
-        console.log('touched 1stIF');
         return false;
       }
       if (curr.val === curr2.val) { 
-        console.log('touched 2ndIF');
         return true;
       }
       if (next) {    
-        console.log('here', count);
         curr = curr.next;
       }
       curr2 = curr2.next;
       next = !next;
     }
 };
-
-let list = null;
-console.log('false case RESULT -> ', hasCycle(list));
-let list1 = {val: 10, next:null};
-console.log('false 1node case RESULT -> ', hasCycle(list1));
-let list2 = {val: 11, next:{val: 12, next:null}};
-console.log('false 1node case RESULT -> ', hasCycle(list2));
-
-let node1 = {val: 1, next: null}
-let node2 = {val: 2, next: null}
-let node3 = {val: 3, next: null}
-let node4 = {val: 4, next: null}
-node1.next = node2;
-node2.next = node3;
-node3.next = node4;
-node4.next = list2;
-
-console.log('lalist->',  node1);
-console.log('cycle - true 1+ nodes case RESULT -> ', hasCycle(node1));
-
-node4.next = list2;
-console.log('no cycle = false 1+ nodes case RESULT -> ', hasCycle(node1));
