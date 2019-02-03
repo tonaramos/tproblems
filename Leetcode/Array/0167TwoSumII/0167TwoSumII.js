@@ -17,19 +17,19 @@ Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
  * @return {number[]}
  */
 
-var twoSum = function(numbers, target) {
+const twoSum = (numbers, target) => {
   let p1 = 0;
   let p2 = numbers.length-1;
   while  (target < numbers[p2 - 1]) {
     p2--;
-  }
+  };
   while( numbers[p1]+numbers[p2] !== target) {
     while (numbers[p1] + numbers[p2] > target) {
       p2--;
-    }
+    };
     while(numbers[p1] + numbers[p2] < target){
       p1++;
-    }
-  }
-return [p1+1,p2+1];
+    };
+  };
+  return [p1+1,p2+1];
 }
