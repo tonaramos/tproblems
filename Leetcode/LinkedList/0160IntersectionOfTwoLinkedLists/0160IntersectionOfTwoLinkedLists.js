@@ -42,7 +42,7 @@ You may assume there are no cycles anywhere in the entire linked structure.
 Your code should preferably run in O(n) time and use only O(1) memory.
 */
 
-var getIntersectionNode = function(headA, headB) {
+const getIntersectionNode = (headA, headB) => {
   if (!headA || !headB) return null;
 
   const getCount = (list) => {
@@ -57,34 +57,25 @@ var getIntersectionNode = function(headA, headB) {
   let countA = getCount(headA);
   let countB = getCount(headB);
   
-  let nodeA = headA;
-  let nodeB = headB;
-    
   if ( countA > countB) {
     while (countA !== countB) {
-      nodeA = nodeA.next;
+      headA = headA.next;
       countA--;
     };
   };
   if ( countB > countA) {
     while (countA !== countB) {
-      nodeB = nodeB.next;
+      headB = headB.next;
       countB--;
     };
   };
-  let intersect;
-  let nodeInt = null;
-    
-  for (let i=0; i< countA + 1; i++) {
-    if (nodeA === null || nodeB === null) return null;
-    if (nodeA.val === nodeB.val && nodeA === nodeB) {
-          return nodeA;
-    //   }
-    // } else {
-    //   intersect = false;
+  for (let i=0; i<countA+1; i++) {
+    if (headA === null || headB === null) return null;
+    if (headA === headB) {
+      return headA;
     }
-    nodeA = nodeA.next;
-    nodeB = nodeB.next;  
+    headA = headA.next;
+    headB = headB.next;  
   }
-  return intersect ? nodeInt : null;
+  return null;
 };
