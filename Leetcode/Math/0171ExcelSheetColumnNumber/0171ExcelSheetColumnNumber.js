@@ -10,12 +10,3 @@ const titleToNumber = (s) => {
   };
   return output;
 };
-
-console.log('RESULT_> ', titleToNumber("A"))
-console.log('RESULT_> ', titleToNumber("Z"))
-console.log('RESULT_> ', titleToNumber("AA"))
-console.log('RESULT_> ', titleToNumber("AB"))
-console.log('RESULT_> ', titleToNumber("UA"))
-console.log('RESULT_> ', titleToNumber("ZZ"))
-console.log('RESULT_> ', titleToNumber("AAA"))
-console.log('RESULT_> ', titleToNumber("ANH"))
