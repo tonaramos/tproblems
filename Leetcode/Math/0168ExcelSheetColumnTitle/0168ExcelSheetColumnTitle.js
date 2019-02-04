@@ -24,22 +24,31 @@ Output: "ZY"
 */
 const convertToTitle = (n) => {
   const dic = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-  const coll = [];
+  const res = '';
   while (n !== 0) {
       let remainder = Math.floor(n/26);
     if (n > 25 && n%26 === 0) {
       coll.push(dic[25]);
       n = remainder -1;
     } else {
-      const letter = dic[n%26-1];
-      coll.push(letter);
-      coll;
+      coll.push(dic[n%26-1]);
       n = remainder;
     }
   }
-  coll;
   return coll.reverse().join('');
 };
+// ========= BETTER IMPLEMENTATION
+// var convertToTitle = function(n) {
+//   var total = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+//   var result = ''
+//   while(n) {
+//       n--
+//       var c = n % 26
+//       result = total[c] + result
+//       n = parseInt(n/26)
+//   }
+//   return result
+// };
 
 // console.log(convertToTitle(0));
 // console.log(convertToTitle(26));
