@@ -23,17 +23,20 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 
 */
 var rob = function(nums) {
-  let index1 = 0;
-  let sum1 = 0;
-  let index2 = 1;
-  let sum2 = 0;
-  while(index1<nums.length){
-    sum1 += nums[index1];
-    index1 = index1 + 2;
+  let prev = 0;                             // sum of the previous num
+  let curr = 0;                             // max sum possible
+  for(let i=0; i<nums.length; i++) {     
+      let temp = curr;  
+      curr = Math.max(prev+nums[i], curr);  //when checking the number at the new index we compare if 
+                                              // we want to take it or the sum of the prevous number is bigger
+                                                  // than taking the numnber at the new index.
+      prev = temp;                           // this will be the sum from the last char taken or not taken
   }
-  while(index2<nums.length){
-    sum2 += nums[index2];
-    index2 = index2 + 2;
-  }
-  return Math.max(sum1, sum2);
+  return curr;
 };
+
+
+let test1 = [1,2,3,1];
+let test2 = [1,2,3,8,0,29,0,0,29];
+
+console.log(rob(test2));
