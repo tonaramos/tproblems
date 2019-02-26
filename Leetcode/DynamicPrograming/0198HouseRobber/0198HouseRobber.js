@@ -22,21 +22,13 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
              Total amount you can rob = 2 + 9 + 1 = 12.
 
 */
-var rob = function(nums) {
-  let prev = 0;                             // sum of the previous num
-  let curr = 0;                             // max sum possible
+const rob = (nums) => {
+  let prev = 0;
+  let curr = 0;
   for(let i=0; i<nums.length; i++) {     
-      let temp = curr;  
-      curr = Math.max(prev+nums[i], curr);  //when checking the number at the new index we compare if 
-                                              // we want to take it or the sum of the prevous number is bigger
-                                                  // than taking the numnber at the new index.
-      prev = temp;                           // this will be the sum from the last char taken or not taken
+    let temp = curr;  
+    curr = Math.max(prev+nums[i], curr);
+    prev = temp;
   }
   return curr;
 };
-
-
-let test1 = [1,2,3,1];
-let test2 = [1,2,3,8,0,29,0,0,29];
-
-console.log(rob(test2));
