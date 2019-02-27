@@ -29,9 +29,9 @@ Return:
 ]
 */
 
-var fizzBuzz = function(n) {
+const fizzBuzz = (n) => {
   let output = [];
-  for (let i = 1; i < n+1; i++) {
+  for (let i=1; i<n+1; i++) {
     if (i%3 === 0 && i%5 === 0) {
       output.push("FizzBuzz")
     } else if (i%3 === 0) {
@@ -44,5 +44,3 @@ var fizzBuzz = function(n) {
   }
   return output;
 };
-
-console.log(fizzBuzz(15))
